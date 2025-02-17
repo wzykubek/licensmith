@@ -1,20 +1,23 @@
 # Licensmith
 
-Crafting the ideal license for your Git repository in seconds!
+Licensmith, a streamlined tool, allows you to create an `LICENSE` file for your Git repository
+with ease, using just one command. This tool is designed to save you time and effort.
 
-## Getting Started
+[![Go Reference](https://pkg.go.dev/badge/go.wzykubek.xyz/licensmith.svg)](https://pkg.go.dev/go.wzykubek.xyz/licensmith)
 
-Licensmith, a streamlined tool, allows you to create an `LICENSE` file for your Git repository with ease, using just one command. This tool is designed to save you time and effort.
+---
 
-### Usage
+## Usage
 
-To generate an ISC `LICENSE` file with the current year and your name, run the following command:
+For example if you want to generate an ISC `LICENSE` file with the current year and your name,
+run the following command:
 
 ```bash
 licensmith add ISC
 ```
 
-By default, Licensmith searches for user details in your local repository (name and email) as a fallback option. It uses global configuration if no local information is found.
+By default, Licensmith read user details from your local Git repository (name and email). 
+As a fallback it uses global Git configuration.
 
 You can customize this process by providing specific values using the following command:
 
@@ -34,22 +37,58 @@ To display a license summary, use:
 licensmith show ISC
 ```
 
-### Installation
+## Installation
 
-Licensmith can be installed using various methods:
+Licensmith can be installed using various methods.
 
-1. **Prebuilt Binaries:**
-    - For stable versions, visit the [Releases](https://github.com/wzykubek/licensmith/releases) page.
-    - To access development versions, check out the [Actions](https://github.com/wzykubek/licensmith/actions).
+### From Source
 
-2. **Installation from Source:** Refer to the [compilation section](#compilation) for step-by-step instructions.
-
-### Compilation
-
-To build Licensmith from source, follow these steps:
+This is universal method to build a binary for any system and architecture. 
+You need to have Go installed.
 
 ```bash
 git clone https://github.com/wzykubek/licensmith
 cd licensmith
-go build -v ./...
+# This command will create dist directory with compiled binary and generated shell completions.
+make
 ```
+
+On Linux distributions you can also install it to `/usr/local` with ease.
+
+```bash
+sudo make install
+```
+
+### Arch Linux
+
+Package is available in [Arch User Repository](https://aur.archlinux.org/packages/licensmith).
+
+#### Using AUR helper
+
+```bash
+# paru
+paru -S licensmith
+
+# yay
+yay -S licensmith
+```
+
+#### Manually
+
+```bash
+git clone https://github.com/wzykubek/licensmith
+cd licensmith
+makepkg -si
+```
+
+### Go Registry
+
+You can install this package using `go install`. 
+Ensure `$GOPATH/bin` is in your `$PATH` variable.
+```bash
+go install go.wzykubek.xyz/licensmith@latest
+```
+
+## License
+
+This project is licensed under ISC license.
